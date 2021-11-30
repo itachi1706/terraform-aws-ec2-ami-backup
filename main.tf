@@ -117,7 +117,7 @@ resource "aws_lambda_function" "ami_backup" {
   runtime          = "python2.7"
   source_code_hash = "${data.archive_file.ami_backup.output_base64sha256}"
 
-  environment = {
+  environment {
     variables = {
       region                = "${var.region}"
       ami_owner             = "${var.ami_owner}"
@@ -140,7 +140,7 @@ resource "aws_lambda_function" "ami_cleanup" {
   runtime          = "python2.7"
   source_code_hash = "${data.archive_file.ami_cleanup.output_base64sha256}"
 
-  environment = {
+  environment {
     variables = {
       region      = "${var.region}"
       ami_owner   = "${var.ami_owner}"
