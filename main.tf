@@ -124,6 +124,10 @@ resource "aws_lambda_function" "ami_backup" {
       block_device_mappings = "${jsonencode(var.block_device_mappings)}"
     }
   }
+
+  lifecycle {
+    ignore_changes = [source_code_hash]
+  }
 }
 
 resource "aws_lambda_function" "ami_cleanup" {
@@ -143,6 +147,10 @@ resource "aws_lambda_function" "ami_cleanup" {
       instance_id = "${var.instance_id}"
       label_id    = "${module.label.id}"
     }
+  }
+
+  lifecycle {
+    ignore_changes = [source_code_hash]
   }
 }
 
