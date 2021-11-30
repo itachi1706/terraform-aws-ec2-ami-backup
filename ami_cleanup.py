@@ -9,7 +9,7 @@
 # deletion. We loop through the AMIs, deregister them and remove all the
 # snapshots associated with that AMI.
 
-from __future__ import print_function
+
 import boto3
 import collections
 import datetime

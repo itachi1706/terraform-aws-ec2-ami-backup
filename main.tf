@@ -110,7 +110,7 @@ resource "aws_lambda_function" "ami_backup" {
   role             = "${aws_iam_role.ami_backup.arn}"
   timeout          = 60
   handler          = "ami_backup.lambda_handler"
-  runtime          = "python2.7"
+  runtime          = "python3.9"
   source_code_hash = "${data.archive_file.ami_backup.output_base64sha256}"
 
   environment {
@@ -137,7 +137,7 @@ resource "aws_lambda_function" "ami_cleanup" {
   role             = "${aws_iam_role.ami_backup.arn}"
   timeout          = 60
   handler          = "ami_cleanup.lambda_handler"
-  runtime          = "python2.7"
+  runtime          = "python3.9"
   source_code_hash = "${data.archive_file.ami_cleanup.output_base64sha256}"
 
   environment {

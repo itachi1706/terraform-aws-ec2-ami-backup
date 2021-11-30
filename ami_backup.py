@@ -8,7 +8,7 @@
 # After creating the AMI it creates a "DeleteOn" tag on the AMI indicating when
 # it will be deleted using the Retention value and another Lambda function
 
-from __future__ import print_function
+
 import boto3
 import collections
 import datetime
