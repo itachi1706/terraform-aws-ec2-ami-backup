@@ -90,7 +90,7 @@ module "label_cleanup" {
 module "label_role" {
   source  = "cloudposse/label/null"
   version = "0.25.0"
-
+  
   namespace = "${var.namespace}"
   stage     = "${var.stage}"
   name      = "${var.name}-${var.instance_id}"
@@ -162,12 +162,13 @@ resource "aws_cloudwatch_event_rule" "ami_backup" {
   description         = "Schedule for AMI snapshot backups"
   schedule_expression = "${null_resource.schedule.triggers.backup}"
   depends_on          = [null_resource.schedule]
+}
 
 resource "aws_cloudwatch_event_rule" "ami_cleanup" {
   name                = "${module.label_cleanup.id}"
   description         = "Schedule for AMI snapshot cleanup"
   schedule_expression = "${null_resource.schedule.triggers.cleanup}"
-  depends_on          = ["null_resource.schedule"]
+  depends_on          = [null_resource.schedule]
 }
 
 resource "aws_cloudwatch_event_target" "ami_backup" {
